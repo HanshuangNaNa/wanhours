@@ -25,5 +25,8 @@ def fetch(url):
     links = parse_links(response)
     q.add(links)
 
+def demo(url):
+    pass
+
 if __name__ == '__main__':
     pass
