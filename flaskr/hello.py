@@ -6,5 +6,22 @@
 # File Name: hello.py
 # Description:
 """
-import logging
-logging.basicConfig(level=logging.INFO,format='%(asctime)s %(filename)s : %(levelname)s %(message)s',datefmt='%Y-%m-%d %A %H:%M:%S')
+from flask import Flask,render_template
+from flask import request
+from flask_script import Manager
+
+app = Flask(__name__)
+manager = Manager(app)
+
+@app.route('/')
+def index():
+    return render_template('index.html')
+
+@app.route('/user/<name>')
+def user(name):
+    name = '<p>'+name+'</p>'
+    return render_template('user.html',name=name)
+
+
+if __name__ == '__main__':
+    app.run(debug=True)
